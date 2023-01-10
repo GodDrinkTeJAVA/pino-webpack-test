@@ -1,7 +1,18 @@
+const { PinoWebpackPlugin } = require("pino-webpack-plugin");
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-}
+  webpack: (config, context) => {
+    config.plugins.push(
+      new PinoWebpackPlugin({
+        transports: [`${__dirname}/modules/logger/transport.js`],
+      })
+    );
 
-module.exports = nextConfig
+    return config;
+  },
+};
+
+module.exports = nextConfig;
