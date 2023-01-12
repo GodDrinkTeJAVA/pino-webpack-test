@@ -5,6 +5,7 @@ import logger from "../modules/logger/logger";
 import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
+  logger.info('asdf')
   return (
     <div className={styles.container}>
       <Head>
